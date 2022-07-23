@@ -68,7 +68,7 @@
 {author} утешает {user}
 {author} кричит на {user} ~smile(ctx, [['Zloy', '3DRage'], ['😡']])~
 {author} толкает в лужу {user} ~smile(ctx, [['d:', 'D:'], []])~
-{author} бегает с топором за {user} ~smile(ctx, [['MEGALUL'], []])~
+{author} бегает с топором за {user} ~smile(ctx, [['MEGALUL']])~
 {author} срывает одежду с {user} ~smile(ctx, '', 'yep')~
 {author} даёт успокоительное {user} ~smile(ctx, [['ppOverheat'], []])~
 {author} закутывается в `choice(['пледик', 'одеялко'])` вместе с {user} ~smile(ctx, [['peepoSleep'], []])~
