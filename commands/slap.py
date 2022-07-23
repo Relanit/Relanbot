@@ -2,6 +2,7 @@ import traceback
 from random import choice, randint
 
 from twitchio.ext import commands
+
 from utils.misc import read_file
 
 

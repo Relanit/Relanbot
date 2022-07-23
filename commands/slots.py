@@ -1,4 +1,5 @@
-from random import choice, sample
+from random import sample
+
 from twitchio.ext import commands
 
 from config import db

@@ -1,5 +1,5 @@
-import motor.motor_asyncio
 import os
+import motor.motor_asyncio
 
 TOKEN = os.getenv('TOKEN')
 CLIENT_ID = os.getenv('CLIENT_ID')

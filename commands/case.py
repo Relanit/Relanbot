@@ -1,6 +1,6 @@
-import aiohttp
 from random import choice
 
+import aiohttp
 from twitchio.ext import commands, routines
 
 

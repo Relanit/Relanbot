@@ -1,5 +1,7 @@
 from random import choice
+
 from twitchio.ext import commands
+
 from utils.misc import read_file
 
 

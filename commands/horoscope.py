@@ -1,6 +1,6 @@
 import difflib
-from bs4 import BeautifulSoup
 
+from bs4 import BeautifulSoup
 import aiohttp
 from twitchio.ext import commands, routines
 
@@ -9,9 +9,7 @@ from utils.misc import censore_banwords
 
 
 def similarity(s1, s2):
-    normalized1 = s1
-    normalized2 = s2
-    matcher = difflib.SequenceMatcher(None, normalized1, normalized2)
+    matcher = difflib.SequenceMatcher(None, s1, s2)
     return matcher.ratio()
 
 
