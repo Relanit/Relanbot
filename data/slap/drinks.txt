@@ -1,0 +1,13 @@
+боржоми ~smile(ctx, [['Water'], ['💦']])~
+пиво ~smile(ctx, [['ppBeer'], ['🍺']])~
+квас 🍷
+вино ~smile(ctx, [['BASED WineTime'], ['WineTime']])~
+виски 🍷
+балтику 🍺
+монстр 🍸
+клубничный коктейль 🍓
+лимонад 🍋
+байкал 🍸
+колу 🍸
+кофе ~smile(ctx, [['peepoCoffee'], ['☕']])~
+чай ~smile(ctx, [['Chai', 'catsittingverycomfortable TeaTime'], ['FeelsOkayMan TeaTime']])~
