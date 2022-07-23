@@ -13,7 +13,7 @@ class Ping(commands.Cog):
         flags=['whitelist']
     )
     async def ping(self, ctx):
-        message = self.bot.smile(ctx, [['TheSvinBot'], ['Pong.']])
+        message = self.bot.smile(ctx, [['TheSvinBot'], ['Pang.']])
         await ctx.reply(message)
 
 
