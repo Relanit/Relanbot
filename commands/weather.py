@@ -65,8 +65,7 @@ class Weather(commands.Cog):
                 data = await response.json()
 
                 if data['cod'] == '404':
-                    await ctx.reply(
-                        'Город не найден. Если вы хотели узнать погоду в городе пользователя, добавьте @ перед ником')
+                    await ctx.reply('Город не найден. Если вы хотели узнать погоду в городе пользователя, добавьте @ перед ником')
                     return
 
             lat = data['coord']['lat']
@@ -75,10 +74,10 @@ class Weather(commands.Cog):
             url = f'http://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units=metric&exclude=current,minutely,hourly&appid={WEATHER_ID}&lang=ru'
             async with session.get(url) as response:
                 onecall = await response.json()
+                print(onecall)
 
         city = data['name']
-        country = f', {get_country(data["sys"]["country"])}' if 'country' in data['sys'] and city != get_country(
-            data['sys']['country']) else ''
+        country = f', {get_country(data["sys"]["country"])}' if 'country' in data['sys'] and city != get_country(data['sys']['country']) else ''
 
         if len(data['weather']) == 1:
             description = data['weather'][0]['description']
@@ -88,8 +87,7 @@ class Weather(commands.Cog):
         icon = self.get_icon(ctx, data, onecall)
 
         temp = round(data['main']['temp'], 1) if round(data['main']['temp'], 1) % 1 != 0 else int(data['main']['temp'])
-        feels_like = f', ощущается как {round(data["main"]["feels_like"], 1)}°C' if abs(
-            temp - data['main']['feels_like']) >= 1 else ''
+        feels_like = f', ощущается как {round(data["main"]["feels_like"], 1)}°C' if abs(temp - data['main']['feels_like']) >= 1 else ''
         wind = data['wind']
 
         gust = ''
@@ -97,8 +95,7 @@ class Weather(commands.Cog):
             gust = f', порывы до {round(wind["gust"], 1) if round(wind["gust"], 1) % 1 != 0 else int(wind["gust"])} м/с.' if \
                 wind['gust'] - wind['speed'] >= 0.5 else ''
 
-        wind = f'Ветер: {get_wind_direction(wind["deg"])} {round(wind["speed"], 1) if round(wind["speed"], 1) % 1 != 0 else int(wind["speed"])} м/с{gust or ". "}' if \
-            wind["speed"] else 'Безветренно.'
+        wind = f'Ветер: {get_wind_direction(wind["deg"])} {round(wind["speed"], 1) if round(wind["speed"], 1) % 1 != 0 else int(wind["speed"])} м/с{gust or ". "}' if wind["speed"] else 'Безветренно.'
         clouds = f'Облачность: {data["clouds"]["all"]}%.' if data["clouds"]["all"] else ''
         humidity = data['main']['humidity']
 
