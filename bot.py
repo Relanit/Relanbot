@@ -7,13 +7,13 @@ import aiohttp
 from twitchio.ext import commands, routines
 
 from utils.smiles import *
-from config import TOKEN, db
+from config import TOKEN, db, CHANNELS
 from cooldown import Cooldown
 
 
 class SvinBot(commands.Bot, Cooldown):
-    def __init__(self, channels):
-        super().__init__(token=TOKEN, prefix='!', initial_channels=channels)
+    def __init__(self):
+        super().__init__(token=TOKEN, prefix='!', initial_channels=CHANNELS)
         self.admins = ['relanit']
         self.trusted_users = ['nelanit', '0pasha_top', 'ya_fanat_statki', 'aroldas1', 'minoxysd', 'cantfindary']
         self.chatters = {}
@@ -22,7 +22,7 @@ class SvinBot(commands.Bot, Cooldown):
         self.global_smiles = set()
         self.channel_smiles = {}
 
-        for channel in channels:
+        for channel in CHANNELS:
             self.chatters[channel] = {}
 
         for command in [path.stem for path in Path('commands').glob('*py')]:
@@ -30,7 +30,7 @@ class SvinBot(commands.Bot, Cooldown):
 
         self.check_streams.start(stop_on_error=False)
         self.update_smiles.start(stop_on_error=False)
-        Cooldown.__init__(self, channels)
+        Cooldown.__init__(self, CHANNELS)
 
     async def event_ready(self):
         print(f'Logged in as {self.nick}')
@@ -68,14 +68,13 @@ class SvinBot(commands.Bot, Cooldown):
 
     @routines.routine(minutes=1.0, iterations=0)
     async def check_streams(self):
-        channels = self.channels_names
-        streams = await self.fetch_streams(user_logins=channels)
+        streams = await self.fetch_streams(user_logins=CHANNELS)
         streams_db = {}
 
         async for stream_db in db.streams.find():
             streams_db[stream_db['channel']] = stream_db
 
-        for channel in channels:
+        for channel in CHANNELS:
             stream = None
 
             for s in streams:
@@ -152,7 +151,7 @@ class SvinBot(commands.Bot, Cooldown):
 
     @routines.routine(minutes=15, iterations=0)
     async def update_smiles(self):
-        broadcasters = await self.fetch_users(names=self.channels_names)
+        broadcasters = await self.fetch_users(names=CHANNELS)
         twitch_smiles = [smile.name for smile in await self.fetch_global_emotes() if '.' not in smile.name and '\\' not in smile.name and '/' not in smile.name]
         async with aiohttp.ClientSession() as client:
             global_smiles = await get_global_smiles(client)
@@ -245,18 +244,5 @@ class SvinBot(commands.Bot, Cooldown):
             return ''
 
 
-initial_channels = []
-
-
-async def get_channels():
-    data = await db.channels.find_one({'_id': 1})
-    global initial_channels
-    initial_channels = data['channels']
-
-
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-loop.run_until_complete(get_channels())
-
-bot = SvinBot(channels=initial_channels)
+bot = SvinBot()
 bot.run()
