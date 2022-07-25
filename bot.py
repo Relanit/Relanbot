@@ -13,7 +13,7 @@ from cooldown import Cooldown
 
 class SvinBot(commands.Bot, Cooldown):
     def __init__(self):
-        super().__init__(token=TOKEN, prefix="!", initial_channels=CHANNELS)
+        super().__init__(token=TOKEN, prefix='!', initial_channels=CHANNELS)
         self.admins = ['relanit']
         self.trusted_users = ['nelanit', '0pasha_top', 'ya_fanat_statki', 'aroldas1', 'minoxysd', 'cantfindary']
         self.chatters = {}
