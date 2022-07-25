@@ -68,13 +68,14 @@ class SvinBot(commands.Bot, Cooldown):
 
     @routines.routine(minutes=1.0, iterations=0)
     async def check_streams(self):
-        streams = await self.fetch_streams(user_logins=CHANNELS)
+        channels = self.channels_names or CHANNELS
+        streams = await self.fetch_streams(user_logins=channels)
         streams_db = {}
 
         async for stream_db in db.streams.find():
             streams_db[stream_db['channel']] = stream_db
 
-        for channel in CHANNELS:
+        for channel in channels:
             stream = None
 
             for s in streams:
@@ -151,7 +152,8 @@ class SvinBot(commands.Bot, Cooldown):
 
     @routines.routine(minutes=15, iterations=0)
     async def update_smiles(self):
-        broadcasters = await self.fetch_users(names=CHANNELS)
+        channels = self.channels_names or CHANNELS
+        broadcasters = await self.fetch_users(names=channels)
         twitch_smiles = [smile.name for smile in await self.fetch_global_emotes() if '.' not in smile.name and '\\' not in smile.name and '/' not in smile.name]
         async with aiohttp.ClientSession() as client:
             global_smiles = await get_global_smiles(client)
