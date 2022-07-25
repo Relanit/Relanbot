@@ -1,5 +1,6 @@
-import asyncio
 import os
+import asyncio
+
 import motor.motor_asyncio
 
 TOKEN = os.getenv('TOKEN')

@@ -74,7 +74,6 @@ class Weather(commands.Cog):
             url = f'http://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units=metric&exclude=current,minutely,hourly&appid={WEATHER_ID}&lang=ru'
             async with session.get(url) as response:
                 onecall = await response.json()
-                print(onecall)
 
         city = data['name']
         country = f', {get_country(data["sys"]["country"])}' if 'country' in data['sys'] and city != get_country(data['sys']['country']) else ''
