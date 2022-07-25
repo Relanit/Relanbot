@@ -1,3 +1,3 @@
 # SvinBot
 Asynchronous Chatbot for Twitch
-Using TwitchIO fork and MongoDB
+Using TwitchIO and MongoDB
