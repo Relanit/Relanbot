@@ -1,4 +1,5 @@
 import asyncio
+import os
 from pathlib import Path
 from datetime import datetime
 from random import choice, sample
@@ -7,13 +8,13 @@ import aiohttp
 from twitchio.ext import commands, routines
 
 from utils.smiles import *
-from config import TOKEN, db, CHANNELS
+from config import db, CHANNELS
 from cooldown import Cooldown
 
 
 class SvinBot(commands.Bot, Cooldown):
     def __init__(self):
-        super().__init__(token=TOKEN, prefix='!', initial_channels=CHANNELS)
+        super().__init__(token=os.getenv('TOKEN'), prefix='!', initial_channels=CHANNELS)
         self.admins = ['relanit']
         self.trusted_users = ['nelanit', '0pasha_top', 'ya_fanat_statki', 'aroldas1', 'minoxysd', 'cantfindary']
         self.chatters = {}

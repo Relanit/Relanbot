@@ -1,10 +1,11 @@
 import difflib
+import os
 
 from bs4 import BeautifulSoup
 import aiohttp
 from twitchio.ext import commands, routines
 
-from config import VK_TOKEN, db
+from config import db
 from utils.misc import censore_banwords
 
 
@@ -98,7 +99,7 @@ class Horoscope(commands.Cog):
         async with aiohttp.ClientSession() as session:
             url = 'https://api.vk.com/method/wall.get'
             params = {
-                'access_token': VK_TOKEN,
+                'access_token': os.getenv('VK_TOKEN'),
                 'v': 5.131,
                 'domain': 'godnoscop',
                 'count': 30,

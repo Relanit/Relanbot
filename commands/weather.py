@@ -1,4 +1,5 @@
 import gettext
+import os
 from datetime import datetime, timedelta
 import re
 import time as t
@@ -7,7 +8,7 @@ from twitchio.ext import commands
 import pycountry
 import aiohttp
 
-from config import WEATHER_ID, db
+from config import db
 
 russian = gettext.translation('iso3166', pycountry.LOCALES_DIR, languages=['ru'])
 russian.install()
@@ -60,7 +61,7 @@ class Weather(commands.Cog):
                 return
 
         async with aiohttp.ClientSession() as session:
-            url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_ID}&lang=ru&units=metric'
+            url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={os.getenv("WEATHER_ID")}&lang=ru&units=metric'
             async with session.get(url) as response:
                 data = await response.json()
 
@@ -71,7 +72,7 @@ class Weather(commands.Cog):
             lat = data['coord']['lat']
             lon = data['coord']['lon']
 
-            url = f'http://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units=metric&exclude=current,minutely,hourly&appid={WEATHER_ID}&lang=ru'
+            url = f'http://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units=metric&exclude=current,minutely,hourly&appid={os.getenv("WEATHER_ID")}&lang=ru'
             async with session.get(url) as response:
                 onecall = await response.json()
 

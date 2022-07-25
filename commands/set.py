@@ -1,22 +1,23 @@
+import os
 from collections import Counter
 
 import aiohttp
 from twitchio.ext import commands
 
-from config import WEATHER_ID, db
+from config import db
 
 
 class Set(commands.Cog):
     """
     
-    !set погода [город]
-    !set гороскоп [знак]
-    !set слоты [варианты через пробел]
+    !set weather [город]
+    !set horoscope [знак]
+    !set slots [варианты через пробел]
     
     !reset
-    !reset погода
-    !reset гороскоп
-    !reset слоты
+    !reset weather
+    !reset horoscope
+    !reset slots
     
     """
 
@@ -27,7 +28,7 @@ class Set(commands.Cog):
         name='set',
         aliases=['reset'],
         cooldown={'per': 5, 'gen': 0},
-        description='Установка гороскопа, города или слотов по умолчанию. {prefix}reset для сброса данных. Примеры: https://i.imgur.com/tlimswq.png'
+        description='Установка гороскопа, города или слотов по умолчанию. {prefix}reset для сброса данных. Примеры: https://i.imgur.com/LvDuz9a.png'
     )
     async def set(self, ctx):
         user_id = ctx.author.id
@@ -46,7 +47,7 @@ class Set(commands.Cog):
                 data = {'horoscope': content[1].lower()}
             elif content[0].lower() in ('город', 'city', 'weather', 'погода'):
                 async with aiohttp.ClientSession() as session:
-                    url = f'http://api.openweathermap.org/data/2.5/weather?q={" ".join(content[1:]).lower()}&appid={WEATHER_ID}&lang=ru&units=metric'
+                    url = f'http://api.openweathermap.org/data/2.5/weather?q={" ".join(content[1:]).lower()}&appid={os.getenv("WEATHER_ID")}&lang=ru&units=metric'
                     async with session.get(url) as response:
                         data = await response.json()
 

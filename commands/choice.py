@@ -1,7 +1,7 @@
+import os
+
 import aiohttp
 from twitchio.ext import commands
-
-from config import RANDOMORG_TOKEN
 
 
 class Choice(commands.Cog):
@@ -52,7 +52,7 @@ class Choice(commands.Cog):
             'jsonrpc': '2.0',
             'method': 'generateIntegers',
             'params': {
-                'apiKey': RANDOMORG_TOKEN,
+                'apiKey': os.getenv('RANDOMORG_TOKEN'),
                 'min': min_,
                 'max': max_,
                 'n': 1,
