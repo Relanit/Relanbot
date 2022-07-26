@@ -23,14 +23,15 @@ class Porf(commands.Cog):
             return
 
         timeout = aiohttp.ClientTimeout(total=12)
+        url = 'https://pelevin.gpt.dobro.ai/generate/'
+        js = {'prompt': prompt, 'length': 50}
         async with aiohttp.ClientSession(timeout=timeout) as session:
-            url = 'https://pelevin.gpt.dobro.ai/generate/'
             async with session.get(url) as response:
                 if response.status != 405:
                     await ctx.reply('Порфирьевич временно недоступен')
                     return
 
-            async with session.post(url, json={'prompt': prompt, 'length': 50}) as response:
+            async with session.post(url, json=js) as response:
                 response = await response.json()
 
         result = prompt + choice(response['replies'])

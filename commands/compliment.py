@@ -14,7 +14,7 @@ class Compliment(commands.Cog):
         name='compliment',
         aliases=['c'],
         cooldown={'per': 5, 'gen': 0},
-        description='Подарить комплимент рандомному/указанному челу.'
+        description='Подарить комплимент рандомному/указанному чаттеру.'
     )
     async def compliment(self, ctx):
         user = ctx.content.strip('@')

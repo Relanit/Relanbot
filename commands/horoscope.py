@@ -117,8 +117,8 @@ class Horoscope(commands.Cog):
             if not post['text'] and i < 3:
                 posts.clear()
 
+                url = 'https://nitter.net/godnoscop'
                 async with aiohttp.ClientSession() as session:
-                    url = 'https://nitter.net/godnoscop'
                     async with session.get(url) as response:
                         html = await response.text()
 

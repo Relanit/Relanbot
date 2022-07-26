@@ -68,7 +68,7 @@ class Link(commands.Cog):
         flags=['moderator', 'whitelist']
     )
     async def link(self, ctx):
-        if not ctx.channel.bot_is_vip and not ctx.channel.bot_is_mod:
+        if not (ctx.channel.bot_is_vip or ctx.channel.bot_is_mod):
             await ctx.reply('Боту необходима випка или модерка для работы этой команды')
             return
         if ctx.command_alias == f'links':

@@ -16,7 +16,7 @@ class Pyramid(commands.Cog):
         flags=['moderator', 'trusted']
     )
     async def pyramid(self, ctx):
-        if not ctx.channel.bot_is_vip and not ctx.channel.bot_is_mod:
+        if not (ctx.channel.bot_is_vip or ctx.channel.bot_is_mod):
             await ctx.reply('Боту необходима випка или модерка для работы этой команды')
             return
         content_split = ctx.content.split()

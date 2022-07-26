@@ -12,11 +12,10 @@ class Ben(commands.Cog):
         name='ben',
         aliases=['бен'],
         cooldown={'per': 5, 'gen': 0},
-        description='Бен.'
+        description='Говорящий Бен.'
     )
     async def ben(self, ctx):
-        smile = self.bot.smile(ctx, [['Ben'], ['☎']])
-        message = smile + ' ' + choice(['Ho-ho-ho', 'Yes', 'No.', 'Ugh'])
+        message = self.bot.smile(ctx, [['Ben'], ['☎']]) + choice(['Ho-ho-ho', 'Yes', 'No.', 'Ugh'])
         await ctx.reply(message)
 
 

@@ -8,20 +8,23 @@ class Vanish(commands.Cog):
 
     @commands.command(
         name='vanish',
-        aliases=['vanishme'],
         cooldown={'per': 5, 'gen': 0},
         description='Очистка чата от своих сообщений. Доверенным пользователям можно указывать время мута.'
     )
     async def vanish(self, ctx):
+        if not ctx.channel.bot_is_mod:
+            await ctx.reply('Боту необходима модерка для работы этой команды')
+            return
+
         duration = 1
-        content = ctx.content
-        if content and ctx.author.name in self.bot.trusted_users:
+        if ctx.author.name in self.bot.trusted_users and ctx.content:
             try:
-                duration = min(int(content), 1209600)
+                duration = min(int(ctx.content), 1209600)
             except ValueError:
                 return
 
-        await ctx.send(f'/timeout {ctx.author.name} {duration} {self.bot._prefix}vanish')
+        message = f'/timeout {ctx.author.name} {duration} {self.bot._prefix}vanish'
+        await ctx.send(message)
 
 
 def prepare(bot):

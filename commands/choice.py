@@ -48,6 +48,7 @@ class Choice(commands.Cog):
             min_ = 0
             max_ = len(content_split) - 1
 
+        url ='http://api.random.org/json-rpc/1/invoke'
         js = {
             'jsonrpc': '2.0',
             'method': 'generateIntegers',
@@ -61,7 +62,7 @@ class Choice(commands.Cog):
         }
 
         async with aiohttp.ClientSession() as session:
-            async with session.get('http://api.random.org/json-rpc/1/invoke', json=js) as response:
+            async with session.get(url, json=js) as response:
                 response = await response.json()
                 index = response['result']['random']['data'][0]
 

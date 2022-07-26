@@ -46,8 +46,8 @@ class Set(commands.Cog):
 
                 data = {'horoscope': content[1].lower()}
             elif content[0].lower() in ('город', 'city', 'weather', 'погода'):
+                url = f'http://api.openweathermap.org/data/2.5/weather?q={" ".join(content[1:]).lower()}&appid={os.getenv("WEATHER_ID")}&lang=ru&units=metric'
                 async with aiohttp.ClientSession() as session:
-                    url = f'http://api.openweathermap.org/data/2.5/weather?q={" ".join(content[1:]).lower()}&appid={os.getenv("WEATHER_ID")}&lang=ru&units=metric'
                     async with session.get(url) as response:
                         data = await response.json()
 

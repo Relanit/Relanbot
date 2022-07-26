@@ -15,7 +15,7 @@ class Case(commands.Cog):
         name='case',
         aliases=['кейс'],
         cooldown={'per': 5, 'gen': 0},
-        description='Покрутить кейс из CS:GO.'
+        description='Прокрутка кейса из CS:GO.'
     )
     async def case(self, ctx):
         skin = choice(self.skins)
@@ -35,8 +35,8 @@ class Case(commands.Cog):
 
     @routines.routine(iterations=1)
     async def get_skins(self):
+        url = 'https://market.csgo.com/api/v2/prices/RUB.json'
         async with aiohttp.ClientSession() as session:
-            url = 'https://market.csgo.com/api/v2/prices/RUB.json'
             async with session.get(url) as response:
                 data = await response.json()
                 self.skins = data['items']
