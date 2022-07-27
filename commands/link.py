@@ -99,7 +99,7 @@ class Link(commands.Cog):
             if len(content) < 2:
                 await ctx.reply(f'Пустой ввод - {self.bot._prefix}help link')
                 return
-            elif len(self.links[ctx.channel.name]) == 40:
+            elif len(self.links.get(ctx.channel.name, [])) == 40:
                 await ctx.reply('Максимальное количество ссылок - 40')
                 return
 
