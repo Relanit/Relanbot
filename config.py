@@ -11,7 +11,7 @@ CHANNELS = []
 async def get_channels():
     data = await db.channels.find_one({'_id': 1})
     global CHANNELS
-    CHANNELS = data['channels']
+    CHANNELS = data["channels"]
 
 
 loop = asyncio.new_event_loop()
