@@ -16,7 +16,7 @@ class SvinBot(commands.Bot, Cooldown):
     def __init__(self):
         super().__init__(token=os.getenv('TOKEN'), prefix='!', initial_channels=CHANNELS)
         self.admins = ['relanit']
-        self.trusted_users = ['nelanit', '0pasha_top', 'ya_fanat_statki', 'aroldas1', 'minoxysd', 'cantfindary']
+        self.trusted_users = ['nelanit', 'aroldas1', 'minoxysd', 'cantfindary']
         self.chatters = {}
         self.streams = set()
         self.blacklist = {'streamelements', 'moobot', 'nightbot', 'oldboty', 'watchstatsbot', 'supibot', 'okey_bot', 'donkboty'}
