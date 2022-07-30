@@ -58,7 +58,7 @@ class MassBan(commands.Cog):
         name='mb',
         aliases=['mt'],
         cooldown={'per': 0, 'gen': 5},
-        description='!mb value - массбан, !mt duration value - массмут. !stop для завершения'
+        description='!mb value - массбан, !mt duration value - массмут. !stop для завершения.'
     )
     async def mass_ban(self, ctx):
         if not ctx.channel.bot_is_mod:
