@@ -26,7 +26,7 @@ class Marbles(commands.Cog):
                 if not content:
                     return
 
-                command = content.split()[0].lower()
+                command = content.split(maxsplit=1)[0].lower()
                 if command == 'play':
                     self.play(message)
                 elif command == 'stop':
