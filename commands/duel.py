@@ -51,7 +51,7 @@ class Duel(commands.Cog):
         description='Мутит одного из участников дуэли. {prefix}duel - рандомный мут, {prefix}sduel - дуэль на скорость отправки смайла.'
     )
     async def duel(self, ctx):
-        if ctx.channel.bot_is_mod:
+        if not ctx.channel.bot_is_mod:
             await ctx.reply('Боту необходима модерка для работы этой команды')
             return
         if ctx.channel.name in self.duels:
