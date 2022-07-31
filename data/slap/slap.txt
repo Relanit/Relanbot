@@ -26,7 +26,7 @@
 {author} и {user} чиллят ~smile(ctx, [['PepeChill', 'Chillin', 'CatChill', 'catChill'], []])~
 {author} купил `choice(['Minecraft SSSsss', 'Overwatch', 'киберпанк', 'Animal Crossing', 'Elden Ring PotFriend', 'Ведьмака', 'Skyrim', 'Jackbox', 'Spore', 'Outlast', 'Red Dead Redemption 2', 'цветы', 'пиццу', 'айфон', 'кота' + smile(ctx, [['modcheck', 'gn'], []])])` для {user}
 {author} сыграл с {user} в `choice(['шашки', 'шахматы', 'покер', 'дурака', 'карты'])` и `choice(['выиграл', 'проиграл'])` `choice([str(randint(100, 2000)) + ' рублей', 'квартиру', 'маму' + smile(ctx, [['mama'], []])])`
-{author} слил нюдесы {user} ~smile(ctx, [['d:'], ['D:']], 'yep')~
+{author} слил `choice(['нюдесы {user}' + smile(ctx, [['d:'], ['D:']], 'yep'), 'фото {user}' + smile(ctx, [['d:', 'D:']]), 'адрес {user}') + smile(ctx, [['d:', 'D:']])])`
 {author} подарит сабку {user} ~smile(ctx, [['Copege', 'COPIUM', 'PukInteresno', 'Clueless'], []])~
 {author} посадил в клетку {user} ~smile(ctx, [['peepoJail'], ['| FeelsBadMan |']])~
 {author} угощает {user} `choice(['перцем чилли', 'тортиком' + smile(ctx, '', 'tasty'), 'пиццой' + smile(ctx, [['Pizza'], ['🍕']], 'tasty'), 'бигмаком 🍔', 'вином' + smile(ctx, [['BASED WineTime'], ['WineTime']]), 'курочкой' + smile(ctx, '', 'tasty'), 'оливковым маслом', 'водкой с коньяком' + smile(ctx, [['ppBeer'], ['🍸']]), 'куском пирога с ежевикой' + smile(ctx, '', 'tasty'), 'сигарой с Бенито Муссолини' + smile(ctx, [['pepeSmoke', 'SmokeTime'], ['🚬']]), 'чаем' + smile(ctx, [['Chai', 'catsittingverycomfortable TeaTime'], ['FeelsOkayMan TeaTime']]), 'кофем' + smile(ctx, [['peepoCoffee'], ['☕']]), 'печеньем 🍪' + smile(ctx, '', 'tasty')])`
@@ -36,8 +36,8 @@
 {author} купил `choice(['кольцо', 'автомобиль', '{user2}'])` для {user} за randint(10000,1000000) рублей ~smile(ctx, '', 'pog')~
 {author} притворяется, что `choice(['слушает', 'не знает', 'не помнит, что должен сабку'])` {user}
 {author} дёргает за волосы {user} ~smile(ctx, [['Pepepains'], []])~
-{author} сплетничает за спиной у {user} ~smile(ctx, [['d:', 'D:'], []])~
-{author} ревнует {user} к {user2}
+{author} сплетничает за спиной у {user} ~smile(ctx, [['d:', 'D:']])~
+{author} ревнует {user} к {user2} ~smile(ctx, [['Zloy', '3DRage'], ['😡']])~
 {author} кусает за `choice(['руку', 'палец', 'ногу'])` {user} ~smile(ctx, [['Pepepains', 'IEatYourHand'], []])~
 {author} сквозь сон бормочит имя {user} ~smile(ctx, '', 'sleep')~
 {author} выгоняет со стрима {user} ~smile(ctx, [['d:', 'D:'], []])~
@@ -75,7 +75,7 @@
 {author} ищет `choice(['совесть', 'мозги', '', ''])` {user} ~smile(ctx, [['modcheck', 'modCheck', 'WHERE', 'ModCheck'], []])~
 {author} вычёркивает из жизни {user} ~smile(ctx, [['d:', 'D:'], []])~
 {author} встречается взлядом с {user} ~smile(ctx, [['Stare', 'stareChamp', 'Starege'], ['😳']])~
-{author} находит заначку {user} ~smile(ctx, '', 'pog')~
+{author} находит `choice(['заначку', 'фотку', 'деньги', 'работу для'])` {user} ~smile(ctx, '', 'pog')~
 {author} забавляется с {user} ~smile(ctx, [['forsenLaughingAtYou', 'PepeLaugh'], ['🤣']])~
 {author} `choice(['осуждает {user}' + smile(ctx, [['WeirdChamping', 'FeelsWeirdMan']]), 'одобряет' + smile(ctx, [['Odobrayu'], ['🏳‍🌈 ']])])`
 {author} поёт колыбельную для {user} ~smile(ctx, '', 'sleep')~
@@ -83,7 +83,7 @@
 {author} ждёт, когда уйдёт {user} ~smile(ctx, [['peepoLeave', 'peepoWeirdLeave', 'Waiting'], ['🚶']])~
 {author} пинает {user} ~smile(ctx, [['d:', 'D:'], []])~
 {author} хочет отдаться {user} ~smile(ctx, '', 'yep')~
-{author} рекомендует интересную книгу {user} ~smile(ctx, [['PepoG'], ['📖']])~
+{author} рекомендует `choice(['интересную книгу {user}' + smile(ctx, [['PepoG'], ['📖']]), 'интересный фильм {user}' + smile(ctx, [['Popkorn'], ['PopCorn']]), 'интересный сериал {user}' + smile(ctx, [['Popkorn'], ['PopCorn']]), 'интересную игру {user}' + smile(ctx, [['Chatting', 'peepoChat'], ['🎮 ']])])`
 {author} провожает до дома {user}
 {author} приносит покушать {user} ~smile(ctx, '', 'tasty')~
 {author} уходит в запой с {user} ~smile(ctx, [['ppBeer'], ['🍺']])~
@@ -97,7 +97,7 @@
 {author} забивает гвозди головой {user} ~smile(ctx, [['d:', 'D:'], []])~
 {author} даёт годный совет {user}
 {author} плюёт в {user} ~smile(ctx, [['PepeSpit'], ['💦']])~
-{author} встречает рассвет вместе с {user} ~smile(ctx, [['Life'], ['🌅']])~
+{author} встречает `choice(['рассвет', 'закат'])` вместе с {user} ~smile(ctx, [['Life'], ['🌅']])~
 {author} выливает `choice(['окрошку', 'кипящее масло', 'ледяную воду', 'кислоту'])` на {user} ~smile(ctx, [['d:', 'D:'], []])~
 {author} согревает своим теплом {user} ~smile(ctx, '', 'love')~
 {author} наслаждается обществом {user} ~smile(ctx, [['Dovolen', 'peepoHappy'], []])~
