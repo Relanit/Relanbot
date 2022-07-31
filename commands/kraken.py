@@ -29,7 +29,7 @@ class Kraken(commands.Cog):
             if self.members[message.channel.name].get(author) == 0:
                 count = message.content.split().count(self.smile[message.channel.name])
 
-                if count > 0:
+                if 0 < count < 6:
                     self.members[message.channel.name][author] = count
 
     @commands.command(
