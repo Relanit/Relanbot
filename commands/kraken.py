@@ -55,7 +55,7 @@ class Kraken(commands.Cog):
             for chatter in self.bot.random_chatter(ctx, allow_self=True, count=number):
                 self.members[ctx.channel.name][chatter] = 0
 
-            smile1 = self.smile[ctx.channel.name] = self.bot.smile(ctx, [['PeepoRunCry'], ['BibleThump']])
+            smile1 = self.smile[ctx.channel.name] = self.bot.smile(ctx, [['PeepoRunCry'], ['BibleThump']]).strip()
             smile2 = self.bot.smile(ctx, [['polarExtreme'], ['Squid2 Squid3']])
             message = f'Кракен начинает охоту за {", ".join(self.members[ctx.channel.name])}! ' \
                       f'Чтобы попробовать сбежать, отправьте от 1 до 5 смайлов {smile1} в чат, принимается только первый вариант. ' \
