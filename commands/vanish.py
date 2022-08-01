@@ -19,7 +19,7 @@ class Vanish(commands.Cog):
         duration = 60
         if ctx.author.name in self.bot.trusted_users and ctx.content:
             try:
-                duration = min(int(ctx.content), 1209600)
+                duration = min(max(duration, int(ctx.content)), 1209600)
             except ValueError:
                 return
 
