@@ -16,7 +16,7 @@ class Vanish(commands.Cog):
             await ctx.reply('Боту необходима модерка для работы этой команды')
             return
 
-        duration = 1
+        duration = 60
         if ctx.author.name in self.bot.trusted_users and ctx.content:
             try:
                 duration = min(int(ctx.content), 1209600)
