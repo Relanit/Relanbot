@@ -43,7 +43,7 @@ class Horoscope(commands.Cog):
                 await ctx.reply('Несуществующий логин')
                 return
 
-            data = await db.users.find_one({'user_id': user[0].id})
+            data = await db.users.find_one({'user_id': str(user[0].id)})
             if data and 'horoscope' in data:
                 content = data['horoscope']
             else:

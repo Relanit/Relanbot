@@ -53,7 +53,8 @@ class Weather(commands.Cog):
             if not user:
                 await ctx.reply('Несуществующий логин')
                 return
-            data = await db.users.find_one({'user_id': user[0].id})
+
+            data = await db.users.find_one({'user_id': str(user[0].id)})
             if data and 'city' in data:
                 city = data['city']
             else:
