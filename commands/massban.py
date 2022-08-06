@@ -4,7 +4,7 @@ from twitchio.ext import commands
 
 from config import CHANNELS
 
-reason = 'Сообщение, содержащее запрещённую фразу (ModBoty)'
+reason = 'Сообщение, содержащее запрещённую фразу (SvinBot)'
 
 
 class MassBan(commands.Cog):
