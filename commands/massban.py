@@ -36,7 +36,7 @@ class MassBan(commands.Cog):
                     await self.stop(message)
             return
 
-        self.message_history[message.channel.name].append((message.author.name, message.content.lower()))
+        self.message_history[message.channel.name].append((message.author.name, message.content))
         if len(self.message_history[message.channel.name]) >= 50:
             del self.message_history[message.channel.name][0]
 
@@ -106,7 +106,7 @@ class MassBan(commands.Cog):
         banned_users = []
 
         for message in self.message_history[ctx.channel.name].copy():
-            if ban_phrase in message[1] and message[0] not in banned_users:
+            if ban_phrase in message[1].lower() and message[0] not in banned_users:
                 while ctx.limited:
                     await asyncio.sleep(0.1)
                 if ctx.channel.name in self.ban_phrases:
