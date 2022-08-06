@@ -65,6 +65,9 @@ class MassBan(commands.Cog):
             await ctx.reply('Боту необходима модерка для работы этой команды')
             return
 
+        if ctx.channel.name != 't2x2':
+            return
+
         content = ctx.content.lower()
 
         if not content:
