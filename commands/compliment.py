@@ -24,7 +24,7 @@ class Compliment(commands.Cog):
         compliments = read_file('data/compliments.txt')
         compliment = choice(compliments)
 
-        smile = self.bot.smile(ctx, [['Flushed']], 'love')
+        smile = self.bot.smile(ctx, [['Flushed', 'AWWWW']], 'love')
         message = f'{ctx.author.display_name} говорит {user}: {compliment} {smile}'
         await ctx.reply(message)
 
