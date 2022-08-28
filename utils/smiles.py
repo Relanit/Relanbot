@@ -4,8 +4,8 @@ smile_examples = {
         'default': {'PogChamp', 'PogBones'}
     },
     'ez': {
-        'channel': {'GIGACHAD', 'Krytoi', 'BASED', 'POU', 'EZ Clap', 'sir'},
-        'default': {'EZ Clap'}
+        'channel': {'GIGACHAD', 'Krytoi', 'BASED', 'POU', 'sir'},
+        'default': {'EZ Clap', 'EZ', 'EZ WineTime'}
     },
     'sad': {
         'channel': {'Sadge', 'SadCat', 'peepoDown', 'pepeCry', 'FeelsWeakMan', 'Sadeg', 'SadChamp', 'catCry', 'sadCat'},
