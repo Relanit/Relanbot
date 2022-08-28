@@ -158,6 +158,8 @@ class Weather(commands.Cog):
                         alert['event'] = 'Низкая температура'
                     elif 'high' in alert_lower and 'temperature' in alert_lower:
                         alert['event'] = 'Высокая температура'
+                    elif 'forest' in alert_lower and 'fire' in alert_lower:
+                        alert['event'] = 'Лесные пожары'
                     elif 'rain' in alert_lower:
                         alert['event'] = 'Дождь'
                     else:
