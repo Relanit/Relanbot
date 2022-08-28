@@ -25,6 +25,7 @@ class Porf(commands.Cog):
         timeout = aiohttp.ClientTimeout(total=12)
         url = 'https://pelevin.gpt.dobro.ai/generate/'
         js = {'prompt': prompt, 'length': 50}
+
         async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.get(url) as response:
                 if response.status != 405:
