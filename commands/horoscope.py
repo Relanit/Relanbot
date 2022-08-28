@@ -28,70 +28,71 @@ class Horoscope(commands.Cog):
         description='Гороскоп по знаку зодиака. Можно установить знак зодиака по умолчанию через {prefix}set horoscope [знак].'
     )
     async def horoscope(self, ctx):
-        content = ctx.content.lower()
+        sign = ctx.content.lower()
 
-        if not content:
+        if not sign:
             data = await db.users.find_one({'user_id': ctx.author.id})
             if data and 'horoscope' in data:
-                content = data['horoscope']
+                sign = data['horoscope']
             else:
                 await ctx.reply(f'Укажите знак зодиака или установите его через {self.bot._prefix}set horoscope [знак]')
                 return
-        elif content.startswith('@'):
-            user = await self.bot.fetch_users(names=[content.strip('@')])
+        elif sign.startswith('@'):
+            user = await self.bot.fetch_users(names=[sign.strip('@')])
             if not user:
                 await ctx.reply('Несуществующий логин')
                 return
 
             data = await db.users.find_one({'user_id': str(user[0].id)})
             if data and 'horoscope' in data:
-                content = data['horoscope']
+                sign = data['horoscope']
             else:
                 await ctx.reply('Пользователь не указывал свой знак зодиака')
                 return
 
-        if content not in self.horoscopes:
-            sign = ''
+        key = sign
+        if sign not in self.horoscopes:
+            new_sign = ''
             sim = 0
             for s in self.horoscopes:
                 if s not in ['рыбы', 'водолей', 'козерог', 'стрелец', 'скорпион', 'весы', 'дева', 'лев', 'рак',
-                             'близнецы', 'телец', 'овен'] and (new_sim := similarity(content, s)) > sim:
-                    sign = s
+                             'близнецы', 'телец', 'овен'] and (new_sim := similarity(sign, s)) > sim:
+                    new_sign = s
                     sim = new_sim
 
             if sim < 0.5:
                 await ctx.reply('Гороскоп не найден')
                 return
 
-            content = sign
+            key = new_sign
 
-        match content:
+        match sign:
             case 'рыбы':
-                sign = '♓'
+                emoji = '♓'
             case 'водолей':
-                sign = '♒ '
+                emoji = '♒ '
             case 'козерог':
-                sign = '♑'
+                emoji = '♑'
             case 'стрелец':
-                sign = '♐'
+                emoji = '♐'
             case 'скорпион':
-                sign = '♏'
+                emoji = '♏'
             case 'весы':
-                sign = '♎'
+                emoji = '♎'
             case 'дева':
-                sign = '♍'
+                emoji = '♍'
             case 'лев':
-                sign = '♌'
+                emoji = '♌'
             case 'рак':
-                sign = '♋'
+                emoji = '♋'
             case 'близнецы':
-                sign = '♊'
+                emoji = '♊'
             case 'телец':
-                sign = '♉'
+                emoji = '♉'
             case 'овен':
-                sign = '♈'
+                emoji = '♈'
 
-        message = sign + ' ' + self.horoscopes[content]
+        message = emoji + ' ' + self.horoscopes[key]
         await ctx.reply(message)
 
     @routines.routine(minutes=10, iterations=0)
