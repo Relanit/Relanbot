@@ -17,15 +17,8 @@ class Omgroulette(commands.Cog):
             return
 
         if message.channel.name in self.omgroulettes:
-            if message.content.startswith(self.bot._prefix):
-                content = message.content.lstrip(self.bot._prefix)
-                if not content:
-                    return
-
-                if message.content[1] == ' ':
-                    message.content = message.content.replace(' ', '', 1)
-
-                command = content.split()[0].lower()
+            if self.bot._prefix in message.content:
+                content = message.content.lower()
                 en_to_ru = {
                     'a': 'а', 'c': 'с',
                     'e': 'е', 'p': 'р',
@@ -33,8 +26,8 @@ class Omgroulette(commands.Cog):
                 }
 
                 for en, ru in en_to_ru.items():
-                    command = command.replace(ru, en)
-                if command == 'accept':
+                    content = content.replace(ru, en)
+                if 'accept' in content:
                     self.accept(message)
 
     @commands.command(
