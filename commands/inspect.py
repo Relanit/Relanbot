@@ -64,7 +64,7 @@ class Inspect(commands.Cog):
 
                 ctx = await self.bot.get_context(message)
                 await ctx.reply('Без спамчика ' + smile)
-                await ctx.send(f'/timeout {message.author.name} 10 spam (by SvinBot)')
+                await ctx.send(f'/timeout {message.author.name} 10 spam (by Relanbot)')
             elif not handle:
                 i = self.warned_users[message.channel.name][message.author.name]
                 timeout = self.timeouts[message.channel.name][i]

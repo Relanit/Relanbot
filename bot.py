@@ -12,7 +12,7 @@ from config import db, CHANNELS
 from cooldown import Cooldown
 
 
-class SvinBot(commands.Bot, Cooldown):
+class Relanbot(commands.Bot, Cooldown):
     def __init__(self):
         super().__init__(token=os.getenv('TOKEN'), prefix="!", initial_channels=CHANNELS)
         self.admins = ['relanit', 'nelanit']

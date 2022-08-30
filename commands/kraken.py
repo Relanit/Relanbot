@@ -86,8 +86,8 @@ class Kraken(commands.Cog):
                     message = f'{survivors[0]} выживает! WeirdChamping Погибшие: {f"{smile1} " * (number - 1)}' \
                               f'{", ".join(self.members[ctx.channel.name])} | Кракен забрал уже {lives} жизней {smile2}'
                 elif len(survivors) == number - 1:
-                    message = f'{", ".join(survivors)} выживают! WeirdChamping Погибший: f"{smile1} " ' \
-                              f'{"".join(self.members[ctx.channel.name])} | Кракен забрал уже {lives} жизней {smile2}'
+                    message = f'{", ".join(survivors)} выживают! WeirdChamping Погибший: {smile1} " ' \
+                              f'{self.members[ctx.channel.name][0]} | Кракен забрал уже {lives} жизней {smile2}'
                 else:
                     message = f'{", ".join(survivors)} выживают! WeirdChamping Погибшие: ' \
                               f'{f"{smile1} " * (number - len(survivors))} {", ".join(self.members[ctx.channel.name])} | ' \
