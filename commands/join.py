@@ -9,8 +9,8 @@ class JoinChannel(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        name='join',
-        aliases=['part'],
+        name='rjoin',
+        aliases=['rpart'],
         flags=['admin']
     )
     async def join_channel(self, ctx):
