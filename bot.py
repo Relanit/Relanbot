@@ -247,5 +247,5 @@ class Relanbot(commands.Bot, Cooldown):
             return ''
 
 
-bot = SvinBot()
+bot = Relanbot()
 bot.run()
