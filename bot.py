@@ -14,7 +14,7 @@ from cooldown import Cooldown
 
 class Relanbot(commands.Bot, Cooldown):
     def __init__(self):
-        super().__init__(token=os.getenv('TOKEN'), prefix='!', initial_channels=CHANNELS)
+        super().__init__(token=os.getenv('TOKEN'), prefix="!", initial_channels=CHANNELS)
         self.admins = ['relanit', 'nelanit']
         self.trusted_users = ['aroldas1', 'minoxysd', 'cantfindary']
         self.chatters = {}
