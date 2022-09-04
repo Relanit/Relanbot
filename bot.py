@@ -45,7 +45,7 @@ class Relanbot(commands.Bot, Cooldown):
 
         content = message.content
         if message.content.startswith('@'):
-            content = message.content.split(' ', 1)[1] if len(message.content.split()) > 1 else message.content
+            content = message.content.split(' ', 1)[1] if len(message.content.split(' ', 1)) > 1 else message.content
 
         if content.startswith(self._prefix):
             content = content.lstrip(self._prefix)
