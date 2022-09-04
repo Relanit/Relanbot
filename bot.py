@@ -114,9 +114,6 @@ class Relanbot(commands.Bot, Cooldown):
                 if channel not in self.streams:
                     self.streams.add(channel)
 
-                    if (data := await db.inspects.find_one({'channel': channel})) and data['active']:
-                        await self.cogs['Inspect'].set(channel)
-
                 if datetime.now().minute % 2 == 0:
                     self.clear_chatters(channel)
             else:
@@ -135,9 +132,6 @@ class Relanbot(commands.Bot, Cooldown):
                                                                                          'chatters': [],
                                                                                          'smiles_stats': {},
                                                                                          'users_smiles_stats': {}}}, upsert=True)
-
-                        if (data := await db.inspects.find_one({'channel': channel})) and data['active']:
-                            self.cogs['Inspect'].unset(channel)
 
                 if not await db.offlinestats.find_one({'channel': channel}):
                     await db.offlinestats.update_one({'channel': channel}, {'$setOnInsert': {'channel': channel},

@@ -10,7 +10,6 @@ class Send(commands.Cog):
 
     @commands.command(
         name='send',
-        aliases=['spam'],
         cooldown={'per': 0, 'gen': 5},
         description='Отправляет текст указанное количество раз (до 15).',
         flags=['moderator', 'whitelist']
