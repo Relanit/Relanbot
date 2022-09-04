@@ -19,7 +19,7 @@ class Relanbot(commands.Bot, Cooldown):
         self.trusted_users = ['aroldas1', 'minoxysd', 'cantfindary']
         self.chatters = {}
         self.streams = set()
-        self.blacklist = {'streamelements', 'moobot', 'nightbot', 'oldboty', 'watchstatsbot', 'supibot', 'okey_bot', 'donkboty'}
+        self.blacklist = {'streamelements', 'moobot', 'nightbot', 'oldboty', 'watchstatsbot', 'supibot', 'okey_bot', 'donkboty', 'modboty'}
         self.global_smiles = set()
         self.channel_smiles = {}
 
@@ -44,7 +44,7 @@ class Relanbot(commands.Bot, Cooldown):
             self.chatters[message.channel.name][message.author.name] = message.author.display_name
 
         content = message.content
-        if 'reply-parent-msg-id' in message.tags:
+        if message.content.startswith('@'):
             content = message.content.split(' ', 1)[1]
 
         if content.startswith(self._prefix):

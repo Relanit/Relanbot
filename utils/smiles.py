@@ -8,7 +8,7 @@ smile_examples = {
         'default': {'EZ Clap', 'EZ', 'EZ WineTime'}
     },
     'sad': {
-        'channel': {'Sadge', 'SadCat', 'peepoDown', 'pepeCry', 'FeelsWeakMan', 'Sadeg', 'SadChamp', 'catCry', 'sadCat'},
+        'channel': {'Sadge', 'SadCat', 'peepoDown', 'pepeCry', 'FeelsWeakMan', 'Sadeg', 'SadChamp', 'catCry', 'sadCat', 'sad'},
         'default': {'peepoSad', 'PoroSad', 'BibleThump'}
     },
     'love': {
