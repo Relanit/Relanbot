@@ -1,4 +1,5 @@
 import asyncio
+import itertools
 from random import choice, randint
 
 from twitchio.ext import commands
@@ -26,8 +27,8 @@ class Omgroulette(commands.Cog):
                 }
 
                 for en, ru in en_to_ru.items():
-                    content = content.replace(ru, en)
-                if 'accept' in content:
+                    content = ''.join(c[0] for c in itertools.groupby(content.replace(ru, en)))
+                if 'acept' in content:
                     self.accept(message)
 
     @commands.command(
