@@ -1,6 +1,6 @@
 smile_examples = {
     'pog': {
-        'channel': {'pog', 'pogpog', 'pfff', 'Pag', 'pag'},
+        'channel': {'pog', 'pogpog', 'pfff', 'Pag', 'pag', 'vahui'},
         'default': {'PogChamp', 'PogBones'}
     },
     'ez': {
