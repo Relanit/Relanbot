@@ -33,7 +33,7 @@ class Kraken(commands.Cog):
                     self.members[message.channel.name][author] = count
 
     @commands.command(
-        name='kraken',
+        name="kraken",
         aliases=['кракен'],
         cooldown={'per': 0, 'gen': 120},
         description='Выпускает в чат кракена, который может утащить с собой до 5 человек.'
@@ -77,19 +77,20 @@ class Kraken(commands.Cog):
                                                             new=True)
                 lives = future['lives']
 
+                smile = self.bot.smile(ctx, [['WeirdChamping']], 'sad')
                 smile1 = self.bot.smile(ctx, [['peepoRIP', 'Deadge'], ['⚰', '💀']])
                 smile2 = self.bot.smile(ctx, [['Deadge', 'roflanPominy', 'BloodTrail']])
                 if len(survivors) == 0:
-                    message = f'Никому не удалось спастись! WeirdChamping Погибшие: {f"{smile1} " * number} ' \
+                    message = f'Никому не удалось спастись! {smile} Погибшие: {f"{smile1} " * number} ' \
                               f'{", ".join(self.members[ctx.channel.name])} | Кракен забрал уже {lives} жизней {smile2}'
                 elif len(survivors) == 1:
-                    message = f'{survivors[0]} выживает! WeirdChamping Погибшие: {f"{smile1} " * (number - 1)}' \
+                    message = f'{survivors[0]} выживает! {smile} Погибшие: {f"{smile1} " * (number - 1)}' \
                               f'{", ".join(self.members[ctx.channel.name])} | Кракен забрал уже {lives} жизней {smile2}'
                 elif len(survivors) == number - 1:
-                    message = f'{", ".join(survivors)} выживают! WeirdChamping Погибший: {smile1} " ' \
+                    message = f'{", ".join(survivors)} выживают! {smile} Погибший: {smile1} " ' \
                               f'{self.members[ctx.channel.name][0]} | Кракен забрал уже {lives} жизней {smile2}'
                 else:
-                    message = f'{", ".join(survivors)} выживают! WeirdChamping Погибшие: ' \
+                    message = f'{", ".join(survivors)} выживают! {smile} Погибшие: ' \
                               f'{f"{smile1} " * (number - len(survivors))} {", ".join(self.members[ctx.channel.name])} | ' \
                               f'Кракен забрал уже {lives} жизней {smile2}'
 
