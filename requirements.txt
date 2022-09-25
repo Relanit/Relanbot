@@ -1,4 +1,4 @@
-https://github.com/Relanit/TwitchIO/archive/0e7c98b.zip
+https://github.com/Relanit/TwitchIO/archive/2e646ec.zip
 python-dateutil~=2.8.2
 dnspython==2.2.0
 pycountry~=22.3.5

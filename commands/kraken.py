@@ -33,7 +33,7 @@ class Kraken(commands.Cog):
                     self.members[message.channel.name][author] = count
 
     @commands.command(
-        name="kraken",
+        name='kraken',
         aliases=['кракен'],
         cooldown={'per': 0, 'gen': 120},
         description='Выпускает в чат кракена, который может утащить с собой до 5 человек.'
