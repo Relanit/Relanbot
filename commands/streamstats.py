@@ -135,7 +135,7 @@ class StreamStats(commands.Cog):
 
                     message = f'{place} место ({messages} сообщений)'
                 else:
-                    smile = self.bot.smile(ctx, [['KEKVVait', 'modcheck', 'Awkward'], [':/']])
+                    smile = self.bot.smile(ctx, '', 'ez')
                     message = f'У вас ни одного сообщения за стрим {smile}'
             else:
                 if user in streamstats['users_stats']:
@@ -150,7 +150,7 @@ class StreamStats(commands.Cog):
 
                     message = f'{user} - {place} место ({messages} сообщений)'
                 else:
-                    smile = self.bot.smile(ctx, [['KEKVVait', 'modcheck', 'Awkward'], [':/']])
+                    smile = self.bot.smile(ctx, '', 'ez')
                     message = f'У {user} ни одного сообщения за стрим {smile}'
         elif len(content_split) == 2 and 'smile' in content_lower_split[0]:
             streamstats = await db.streamstats.find_one({'channel': channel}, {'users_smiles_stats': 1,
@@ -194,7 +194,7 @@ class StreamStats(commands.Cog):
                     smile = self.bot.smile(ctx, '', 'chatting')
                     message = f'{smile} Ваш топ смайлов за стрим: {", ".join(top)}'
                 else:
-                    smile = self.bot.smile(ctx, [['KEKVVait', 'modcheck', 'Awkward'], [':/']])
+                    smile = self.bot.smile(ctx, '', 'ez')
                     message = f'Вы не отправили ни одного смайла за стрим {smile}'
             else:
                 streamstats = await db.streamstats.find_one({'channel': channel}, {f'users_smiles_stats.{user}': 1})
@@ -209,7 +209,7 @@ class StreamStats(commands.Cog):
                     smile = self.bot.smile(ctx, [['Chatting', 'FeelsChattingMan', 'chatting'], ['ImTyping ']])
                     message = f'{smile} Топ смайлов {user}: {", ".join(top)}'
                 else:
-                    smile = self.bot.smile(ctx, [['KEKVVait', 'modcheck', 'Awkward'], [':/']])
+                    smile = self.bot.smile(ctx, '', 'ez')
                     message = f'{user} не отправил ни одного смайла за стрим {smile}'
         elif len(content_split) == 3 and 'smile' in content_lower_split[0] and content_lower_split[2] == 'top':
             streamstats = await db.streamstats.find_one({'channel': channel}, {'users_smiles_stats': 1,
@@ -246,7 +246,7 @@ class StreamStats(commands.Cog):
                     else:
                         message = f'Вы ни разу не использовали {smile}'
                 else:
-                    smile = self.bot.smile(ctx, [['KEKVVait', 'modcheck', 'Awkward'], [':/']])
+                    smile = self.bot.smile(ctx, '', 'ez')
                     message = f'Вы не отправили ни одного смайла за стрим {smile}'
             else:
                 streamstats = await db.streamstats.find_one({'channel': channel}, {f'users_smiles_stats.{user}': 1})
@@ -258,7 +258,7 @@ class StreamStats(commands.Cog):
                     else:
                         message = f'{user} ни разу не использовал {smile}'
                 else:
-                    smile = self.bot.smile(ctx, [['KEKVVait', 'modcheck', 'Awkward'], [':/']])
+                    smile = self.bot.smile(ctx, '', 'ez')
                     message = f'{user} не отправил ни одного смайла {smile}'
         else:
             message = 'Ошибка - !help ss'
