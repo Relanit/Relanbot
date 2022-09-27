@@ -92,14 +92,16 @@ async def get_ffz(client, broadcaster_id):
     return smiles
 
 
-async def get_7tv(client, login):
-    url = f'https://api.7tv.app/v2/users/{login}/emotes'
+async def get_7tv(client, broadcaster_id):
+    url = f'https://7tv.io/v3/users/twitch/{broadcaster_id}'
     async with client.get(url) as response:
         data = await response.json()
 
+    emote_set = data.get('emote_set', {}).get('emotes', [])
     smiles = []
+
     try:
-        for smile in data:
+        for smile in emote_set:
             smiles.append(smile['name'])
     except TypeError:
         pass

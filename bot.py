@@ -158,7 +158,7 @@ class Relanbot(commands.Bot, Cooldown):
                 login = broadcaster.name.lower()
                 bttv = await get_bttv(client, broadcaster.id)
                 ffz = await get_ffz(client, broadcaster.id)
-                stv = await get_7tv(client, login)
+                stv = await get_7tv(client, broadcaster.id)
                 sub = [smile.name for smile in await self.fetch_channel_emotes(broadcaster.id)]
                 self.channel_smiles[login] = set(bttv + ffz + stv + sub)
                 await asyncio.sleep(15)
