@@ -15,6 +15,6 @@ def censore_banwords(text):
     for word in words:
         for banword in banwords:
             if word.lower().find(banword) != -1:
-                text = text.replace(word, '*' * len(word))
+                text = text.replace(word, '[УДАЛЕНО]')
 
     return text
