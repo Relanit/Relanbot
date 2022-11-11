@@ -98,6 +98,7 @@ class StreamStats(commands.Cog):
                       f'Всего сообщений: {total_messages}. ' \
                       f'Скорость сообщений: {messages_speed} в секунду.'
         elif content_lower == 'top':
+            return
             streamstats = await db.streamstats.find_one({'channel': channel}, {'users_stats': 1})
             items = streamstats['users_stats'].items()
             sorted_users = sorted(items, key=lambda x: x[1], reverse=True)
