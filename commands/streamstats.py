@@ -120,6 +120,7 @@ class StreamStats(commands.Cog):
             smile = self.bot.smile(ctx, '', 'chatting')
             message = f'{smile} Топ смайлов за стрим: {", ".join(top)}'
         elif len(content_split) == 1:
+            return
             streamstats = await db.streamstats.find_one({'channel': channel}, {'users_stats': 1})
             user = content_lower_split[0]
             if user == 'me':
