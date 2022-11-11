@@ -9,7 +9,7 @@ class Ng(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        name='ng',
+        name="ng",
         aliases=['нг'],
         cooldown={'per': 5, 'gen': 0},
         description='Оставшееся время до Нового Года.'
