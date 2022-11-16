@@ -118,7 +118,7 @@ class StreamStats(commands.Cog):
             for place, smile in enumerate(sorted_smiles[:5], start=1):
                 top.append(f'{place}. {smile[0]} - {smile[1]}{" использований" if place == 1 else ""}')
 
-            smile = self.bot.smile(ctx, '', 'chatting')
+            smile = self.bot.smile(ctx, "", 'chatting')
             message = f'{smile} Топ смайлов за стрим: {", ".join(top)}'
         elif len(content_split) == 1:
             return
