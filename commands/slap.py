@@ -7,19 +7,18 @@ from utils.misc import read_file
 
 
 class Slap(commands.Cog):
-
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command(
-        name='slap',
-        aliases=['do'],
-        cooldown={'per': 5, 'gen': 0},
-        description='Пнуть рандомного/указанного чела.'
+        name="slap",
+        aliases=["do"],
+        cooldown={"per": 5, "gen": 0},
+        description="Пнуть рандомного/указанного чела.",
     )
     async def slap(self, ctx):
-        user = user2 = ctx.content.strip('@')
-        slap = choice(read_file('data/slap/slap.txt'))
+        user = user2 = ctx.content.strip("@")
+        slap = choice(read_file("data/slap/slap.txt"))
 
         try:
             if not user:
@@ -32,45 +31,73 @@ class Slap(commands.Cog):
                 while user == user2:
                     user2 = self.bot.random_chatter(ctx)
 
-            if 'choice' in slap:
-                for word in slap.split('`'):
-                    if 'choice' in word:
-                        slap = slap.replace(word, eval(word, {'choice': choice, 'smile': self.bot.smile, 'ctx': ctx,'str': str, 'randint': randint}))
-                slap = slap.replace('`', '')
+            if "choice" in slap:
+                for word in slap.split("`"):
+                    if "choice" in word:
+                        slap = slap.replace(
+                            word,
+                            eval(
+                                word,
+                                {
+                                    "choice": choice,
+                                    "smile": self.bot.smile,
+                                    "ctx": ctx,
+                                    "str": str,
+                                    "randint": randint,
+                                },
+                            ),
+                        )
+                slap = slap.replace("`", "")
 
             kwargs = {}
             for word in slap.split():
-                if 'author' in word:
-                    kwargs['author'] = ctx.author.display_name if ctx.author.display_name.lower() == ctx.author.name else ctx.author.name
-                elif 'user2' in word:
-                    kwargs['user2'] = user2
-                elif 'user' in word:
-                    kwargs['user'] = user
-                elif 'vozol' in word:
-                    kwargs['vozol'] = choice(read_file('data/vozol.txt'))
-                elif 'food' in word:
-                    kwargs['food'] = choice(read_file('data/slap/food.txt')).strip('\n').format(user2=user2)
-                elif 'compliment' in word:
-                    kwargs['compliment'] = choice(read_file('data/compliments.txt'))
-                elif 'drink' in word:
-                    kwargs['drink'] = choice(read_file('data/slap/drinks.txt')).strip('\n')
-                elif 'game' in word:
-                    kwargs['game'] = choice(read_file('data/slap/games.txt')).strip('\n')
+                if "author" in word:
+                    kwargs["author"] = (
+                        ctx.author.display_name
+                        if ctx.author.display_name.lower() == ctx.author.name
+                        else ctx.author.name
+                    )
+                elif "user2" in word:
+                    kwargs["user2"] = user2
+                elif "user" in word:
+                    kwargs["user"] = user
+                elif "vozol" in word:
+                    kwargs["vozol"] = choice(read_file("data/vozol.txt"))
+                elif "food" in word:
+                    kwargs["food"] = (
+                        choice(read_file("data/slap/food.txt"))
+                        .strip("\n")
+                        .format(user2=user2)
+                    )
+                elif "compliment" in word:
+                    kwargs["compliment"] = choice(read_file("data/compliments.txt"))
+                elif "drink" in word:
+                    kwargs["drink"] = choice(read_file("data/slap/drinks.txt")).strip(
+                        "\n"
+                    )
+                elif "game" in word:
+                    kwargs["game"] = choice(read_file("data/slap/games.txt")).strip(
+                        "\n"
+                    )
 
             message = slap.format(**kwargs)
-            if 'smile' in message:
-                for word in message.split('~'):
-                    if 'smile' in word:
-                        message = message.replace(word, eval(word, {'smile': self.bot.smile, 'ctx': ctx}))
-                message = message.replace('~', '')
+            if "smile" in message:
+                for word in message.split("~"):
+                    if "smile" in word:
+                        message = message.replace(
+                            word, eval(word, {"smile": self.bot.smile, "ctx": ctx})
+                        )
+                message = message.replace("~", "")
 
-            if 'randint' in message:
+            if "randint" in message:
                 for word in message.split():
-                    if 'randint' in word:
-                        message = message.replace(word, str(eval(word, {'randint': randint})))
-        except:
+                    if "randint" in word:
+                        message = message.replace(
+                            word, str(eval(word, {"randint": randint}))
+                        )
+        except Exception:
             traceback.print_exc()
-            print(slap[0:70] + '...')
+            print(f"{slap[:70]}...")
             return
 
         await ctx.reply(message)
